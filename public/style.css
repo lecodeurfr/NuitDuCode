@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "Friend";
+    src:
+      local("Friend"),
+      url("./Assets/Friend-Bold.otf") format("opentype");
+  }
+p{
+    font-family: "Friend";
+}
+.mainContainer{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items:flex-end;
+}
+.slideContainer{
+    left: 0;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+    -webkit-box-shadow: 0px 0px 15px 5px #000000; 
+    box-shadow: 0px 0px 15px 0px #000000;
+    border-radius: 10px;
+    padding: 10px;
+}
+.title{
+    font-size: 110px;
+    font-weight: 900;
+}
+.desc{
+    font-size: 32px;
+    font-family: Helvetica;
+    color: #4d4d4d;
+}
+body{
+    overflow: hidden;
+}
