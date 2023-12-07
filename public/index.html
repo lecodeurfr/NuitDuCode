@@ -11,28 +11,37 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <title>Ptit Président - Connexion</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <title>Tindearth</title>
+    <link rel="stylesheet" href="index.css">
 
 </head>
 
 <body>
 
-    <h1>Inscription</h1>
-    <form id="inscription-form">
+    <div class="mainContainer">
+        <div class="connexionContainer">
+            <h1>Tindearth</h1>
+            <span class="circle"></span>
+            <button class="randomProfile" onclick="change()"></button><br><br>
+            <form id="inscription-form">
 
-        <label for="nom">Nom d'utilisateur:</label>
-        <input type="text" id="nom" name="nom" required><br>
+                <label for="nom">Nom d'utilisateur:</label><br>
+                <input type="text" id="nom" name="nom" required><br>
+                <br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+                <label for="motdepasse">Mot de passe:</label><br>
+                <input type="password" id="motdepasse" name="motdepasse" required><br>
+                <br>
 
-        <label for="motdepasse">Mot de passe:</label>
-        <input type="password" id="motdepasse" name="motdepasse" required><br>
+                <input type="checkbox"><label> Rester connectée</label><br>
+                <br>
 
-        <button type="submit">S'inscrire</button>
-    </form>
-
+                <button class="connexion" type="submit" onclick="launchPage()">Se connecter</button><br>
+                <br>
+                <button class="connexion" type="submit" onclick="launchPage()">S'inscrire</button>
+            </form>
+        </div>
+    </div>
     <script src="index.js"></script>
 
 </body>
