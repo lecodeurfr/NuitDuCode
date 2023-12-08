@@ -19,6 +19,7 @@ p{
     align-items:center;
     background-image: url("./Assets/BG_Light.svg");
     background-size: cover;
+    overflow: hidden;
 }
 .mainContainer-dark{
     position: absolute;
@@ -32,6 +33,7 @@ p{
     align-items:center;
     background-image: url("./Assets/BG_Dark.svg");
     background-size: cover;
+    overflow: hidden;
 }
 #sliders{
     width: 100%;

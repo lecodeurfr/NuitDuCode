@@ -165,3 +165,9 @@ function generateResponse(Stitle, Sdesc){
     container.appendChild(hint)
     document.getElementById("sliders").appendChild(container)
 }
+function verifyPhone(){
+    if(window.screen.height < window.screen.width){
+        alert("L'application à été développé pour les mobiles, veuillez utiliser votre téléphone pour une exprérience optimale")
+    }
+}
+verifyPhone()

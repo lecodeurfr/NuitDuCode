@@ -32,6 +32,12 @@ inscriptionForm.addEventListener("submit", function (e) {
         });*/
 });
 let isLightMode = true
+document.getElementById("logo").setAttribute("src", "./Assets/Logo_Light.svg")
+        document.getElementById("mode").setAttribute("src", "./Assets/Moon.svg")
+        document.getElementById("container").setAttribute("class", "mainContainer-light")
+        document.getElementById("pfp").setAttribute("class", "circle-light")
+        document.getElementById("nom").setAttribute("class", "name-light")
+        isLightMode = true
 function switchMode(){
     if(isLightMode){
         document.getElementById("logo").setAttribute("src", "./Assets/Logo_Dark.svg")
@@ -49,3 +55,10 @@ function switchMode(){
         isLightMode = true
     }
 }
+
+function verifyPhone(){
+        if(window.screen.height < window.screen.width){
+            alert("L'application à été développé pour les mobiles, veuillez utiliser votre téléphone pour une exprérience optimale")
+        }
+}
+verifyPhone()
