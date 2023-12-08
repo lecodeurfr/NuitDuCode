@@ -60,7 +60,7 @@ p{
     color: whitesmoke;
 }
 .title{
-    font-size: 100px;
+    font-size: 70px;
     font-weight: 900;
 }
 .desc{
@@ -209,4 +209,14 @@ body{
     color: #f1f1f1;
     font-family: Helvetica;
     font-size: 35px;
+}
+.isValid{
+    color: #336e39;
+    font-size: 35px;
+    font-family: Helvetica;
+}
+.isInvalid{
+    color: #6e3333;
+    font-size: 35px;
+    font-family: Helvetica;
 }

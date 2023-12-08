@@ -1,7 +1,36 @@
 let touchstartX = 0
 let touchendX = 0
 let isLeaderOpen = false
+
+let titles = ["La pollution de l’air aggrave et augmente les risques d’asthme.", 
+"Les chimpanzés ne sont pas capables de filtrer leur eau.",
+"En 30 ans, la température a augmenté de 0,5°C.",
+"L’énergie renouvelable permet de diminuer les émissions de gaz à effet de serre.",
+"La fonte du permafrost ne présente aucun risque.",
+"De nombreuses analyses montrent que les zones glacées contiennent des bactéries et agents viraux dangereux. Leurs libérations peuvent provoquer des désastres.",
+"Les feux de forêts seront 50% plus fréquents avant la fin du siècle.",
+"Le niveau des océans a augmenté de 5 centimètres en un siècle.",
+"L’amplitude des marées est proportionnelle à l’augmentation du niveau marin.",
+"Le réchauffement climatique a entraîné de nombreuses espèces invasives.",
+"Il y a 3 facteurs qui favorisent l’apparition d’un “méga feu”",
+"La canicule de l’été 2003 en Europe n’a pas eu de conséquences majeures.",
+"Près de 3 milliards d’animaux morts ou déportés à cause du réchauffement climatique en 2019-2020."]
+let desc = ["Il est prouvé que la surexposition et l’augmentation de la pollution de l’air a une incidence élevée sur les maladies atopiques, y compris l’asthme.",
+ "Au Sénégal, lors de sécheresses extrêmes, des chimpanzés ont été vus en train de filtrer leur eau à l'aide de trous dans le sable afin de filtrer les bactéries.",
+"Malheureusement, la température a augmenté de 1.5°C en 30 ans.",
+"L’énergie renouvelable réduit la pollution mais la fabrication et l’installation de systèmes produit des émissions de gaz à effet de serre.",
+"D’après les Nations Unies, à l'horizon 2030, la fréquence des feux de forêts augmentera de 14%, voire même 50% d’ici 2050.",
+"Entre 1901 et 2010, les niveaux des océans et des mers de la planète ont augmenté d’environ 19 centimètres à cause de la fonte des glaces.",
+"Les spécialistes du BRGM démontrent que l’amplitude des marées n’est pas forcément proportionnelle à l’augmentation du niveau marin.",
+"Les espèces adaptées à des climats chaud ont migré dans des zones plus froides au détriment des espèces locales.",
+"Les conditions atmosphériques (T° > 40°C) Taux d’humidité très bas ( < 20% ) Des rafales de vents entre 70 et 80 km/h.",
+"Les canicules deviennent de plus en plus fréquentes et longues et mettent en péril les populations fragiles, qui souffrent de déshydratation.",
+"Un rapport sur les feux de forêt en Australie rapporte près de 3 milliards de morts ou de migrations d'animaux."]
+//images : ./images/Q + nb +.webp
+let responses = [true,false,false,true,false,true,false,false,true,true,false,true]
     
+let curQuestion = 0
+
 function checkDirection() {
   if (touchendX < touchstartX) animLeft()
   if (touchendX > touchstartX) animRight()
@@ -40,11 +69,17 @@ async function animLeft(){
     document.getElementById("slide").remove()
     await sleep(100)
     if(isResponse){
-        generateResponse("Un arbre tombe", "Lorem ipsum dolor sit amet. Cum dignissimos consequuntur aut praesentium voluptatem in blanditiis magni sed eligendi alias ad ullam aliquid! Ab voluptatem dignissimos 33 perferendis ratione nam animi neque et voluptatem accusantium et galisum voluptatum est rerum aliquid.")
+        generateResponse(titles[curQuestion], desc[curQuestion], responses[curQuestion])
         isResponse = false
         document.getElementById("bottom").style.display = "none";
+        if(curQuestion < titles.length){
+            curQuestion++
+        }else{
+            curQuestion = 0
+        }
     }else{
-        generateCard("Un arbre tombe", "./Assets/BG_Dark.svg")
+        let nb = curQuestion+1
+        generateCard(titles[curQuestion], "./images/Q"+nb+".webp")
         isResponse = true
         document.getElementById("bottom").style.display = "flex";
     }
@@ -62,11 +97,17 @@ async function animRight(){
     document.getElementById("slide").remove()
     await sleep(100)
     if(isResponse){
-        generateResponse("Un arbre tombe", "Lorem ipsum dolor sit amet. Cum dignissimos consequuntur aut praesentium voluptatem in blanditiis magni sed eligendi alias ad ullam aliquid! Ab voluptatem dignissimos 33 perferendis ratione nam animi neque et voluptatem accusantium et galisum voluptatum est rerum aliquid.")
+        generateResponse(titles[curQuestion], desc[curQuestion], responses[curQuestion])
         isResponse = false
         document.getElementById("bottom").style.display = "none";
+        if(curQuestion < titles.length){
+            curQuestion++
+        }else{
+            curQuestion = 0
+        }
     }else{
-        generateCard("Un arbre tombe", "./Assets/BG_Dark.svg")
+        let nb = curQuestion+1
+        generateCard(titles[curQuestion], "./images/Q"+nb+".webp")
         isResponse = true
         document.getElementById("bottom").style.display = "flex";
     }
@@ -142,8 +183,9 @@ function generateCard(Stitle, Simg){
     container.appendChild(image)
     document.getElementById("sliders").appendChild(container)
 }
-generateCard("Un arbre tombe", "./Assets/BG_Dark.svg")
-function generateResponse(Stitle, Sdesc){
+let nb = curQuestion+1
+generateCard(titles[curQuestion], "./images/Q"+nb+".webp")
+function generateResponse(Stitle, Sdesc, isTrue){
     let container = document.createElement("div");
     if(lightMode){
         container.setAttribute("class", "slideContainer-light")
@@ -151,6 +193,15 @@ function generateResponse(Stitle, Sdesc){
         container.setAttribute("class", "slideContainer-dark")
     }
     container.setAttribute("id", "slide")
+    let isCorrect = document.createElement("p")
+    if(isTrue){
+        isCorrect.setAttribute("class", "isValid")
+        isCorrect.innerText = "Vrai !"
+    }else{
+        isCorrect.setAttribute("class","isInvalid")
+        isCorrect.innerText = "Faux"
+    }
+    container.appendChild(isCorrect)
     let title = document.createElement("p")
     title.setAttribute("class", "title")
     title.innerText = Stitle
