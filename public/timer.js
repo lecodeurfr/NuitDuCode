@@ -1,8 +1,7 @@
-var timer = document.getElementById("timer");
-let timerStart = setInterval(chrono, 1000);
-setInterval(chrono, 1000);
+let update = setInterval(myTimer ,1000);
+var time = 0;
 
-function chrono() {
-    const d = new Date();
-    timer.innerHTML = d.toLocaleTimeString();
-  } 
+function myTimer() {
+  time += 1;
+  document.getElementById("timer").innerHTML = time ;
+}
