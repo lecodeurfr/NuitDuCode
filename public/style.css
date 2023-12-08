@@ -43,8 +43,6 @@ p{
 .slideContainer-light{
     position: relative;
     width: 80%;
-    -webkit-box-shadow: 0px 0px 15px 5px #000000; 
-    box-shadow: 0px 0px 15px 0px #000000;
     border-radius: 40px;
     padding: 20px;
     text-align: center;
@@ -53,8 +51,6 @@ p{
 .slideContainer-dark{
     position: relative;
     width: 80%;
-    -webkit-box-shadow: 0px 0px 15px 5px #000000; 
-    box-shadow: 0px 0px 15px 0px #000000;
     border-radius: 40px;
     padding: 20px;
     text-align: center;
@@ -62,7 +58,7 @@ p{
     color: whitesmoke;
 }
 .title{
-    font-size: 110px;
+    font-size: 100px;
     font-weight: 900;
 }
 .desc{
@@ -91,6 +87,12 @@ p{
     justify-content: space-around;
     align-items: center;
     width: 100%;
+}
+.imageSlider{
+    border-radius: 20px;
+    width: 90%;
+    height: 50%;
+    background-color: white;
 }
 body{
     overflow: hidden;

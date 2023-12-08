@@ -102,9 +102,10 @@ function generateCard(Stitle, Sdesc){
     title.setAttribute("class", "title")
     title.innerText = Stitle
     container.appendChild(title)
-    //let image = document.createAttribute("img")
-    //image.setAttribute("class", "imageSlider")
-    //container.appendChild(image)
+    let image = document.createElement("img")
+    image.setAttribute("class", "imageSlider")
+    image.setAttribute("src", "./Assets/BG_Light.svg");
+    container.appendChild(image)
     document.getElementById("sliders").appendChild(container)
 }
 generateCard("Un arbre tombe", "Un arbre est tombé un jour à un endroit pas loin de Rennes, une équipe de sapeurs pompier est dépêchée sur place afin de dégager l'arbre")
