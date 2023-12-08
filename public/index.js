@@ -3,12 +3,12 @@ console.log("hey! hi!");
 let inscriptionForm = document.getElementById("inscription-form");
 
 function launchPage(){
-    window.open("main.html");
-}
-
-function change(){
-    const circle = document.getElementById("circle")
-    circle.style.backgroundColor = "blue";
+    const name = document.getElementById("nom").value;
+    if(name === ""){
+        console.log("CONNARD");
+    }else{
+        window.open("main.html");
+    }
 }
 
 inscriptionForm.addEventListener("submit", function (e) {
@@ -16,9 +16,8 @@ inscriptionForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const nom = document.getElementById("nom").value;
-    const motdepasse = document.getElementById("motdepasse").value;
 
-    console.log(nom, motdepasse);
+    console.log(nom);
 
     // Envoyer les données au serveur via Axios
     /*
