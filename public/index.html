@@ -20,25 +20,16 @@
 
     <div class="mainContainer">
         <div class="connexionContainer">
-            <h1>Tindearth</h1>
-            <span class="circle"></span>
-            <button class="randomProfile" onclick="change()"></button><br><br>
+            <img src="Assets/SVG/Sun.svg" style="width: 40px; margin-top: 20px; position: absolute; padding-left: 150px"><br>
+            <img id="logo" src="Assets/SVG/Logo_Light.svg" style="width: 200px; margin-top: 60px"><br><br><br>
+            <span class="circle"></span><br><br>
             <form id="inscription-form">
-
-                <label for="nom">Nom d'utilisateur:</label><br>
-                <input type="text" id="nom" name="nom" required><br>
+                <br>
+                <input class="name" type="text" placeholder="Pseudo" id="nom" name="nom" required><br>
                 <br>
 
-                <label for="motdepasse">Mot de passe:</label><br>
-                <input type="password" id="motdepasse" name="motdepasse" required><br>
+                <button class="connexion" type="submit" onclick="launchPage()">Jouer</button><br>
                 <br>
-
-                <input type="checkbox"><label> Rester connectée</label><br>
-                <br>
-
-                <button class="connexion" type="submit" onclick="launchPage()">Se connecter</button><br>
-                <br>
-                <button class="connexion" type="submit" onclick="launchPage()">S'inscrire</button>
             </form>
         </div>
     </div>
