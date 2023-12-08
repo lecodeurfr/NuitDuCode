@@ -19,11 +19,11 @@
 
 <body>
 
-    <div class="mainContainer">
+    <div class="mainContainer" id="container">
         <div class="connexionContainer">
-            <img src="Assets/SVG/Sun.svg" style="width: 40px; margin-top: 20px; position: absolute; padding-left: 150px"><br>
+            <img id="mode" src="Assets/Sun.svg" onclick="switchMode()" style="width: 40px; margin-top: 20px; position: absolute; padding-left: 150px"><br>
             <img id="logo" src="Assets/SVG/Logo_Light.svg" style="width: 200px; margin-top: 60px"><br><br><br>
-            <span class="circle"></span><br><br>
+            <span class="circle-light" id="pfp"></span><br><br>
             <form id="inscription-form">
                 <br>
                 <input class="name" type="text" placeholder="Pseudo" id="nom" name="nom" required><br>

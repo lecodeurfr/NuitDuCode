@@ -8,11 +8,9 @@ body{
     font-family: "Friend";
     overflow: hidden;
     text-align: center;
-    background-image: url("Assets/SVG/BG_Login_Light.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    
 }
-.mainContainer{
+.mainContainer-light{
     position: absolute;
     display: flex;
     width: 100%;
@@ -21,6 +19,22 @@ body{
     top: 0;
     justify-content: center;
     align-items:flex-end;
+    background-image: url("Assets/BG_Light.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mainContainer-dark{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items:flex-end;
+    background-image: url("Assets/BG_Dark.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .connexionContainer{
     left: 0;
@@ -29,8 +43,16 @@ body{
     border-radius: 10px;
     padding: 10px;
 }
-.circle {
+.circle-light {
     background-image: url("Assets/SVG/PFP_Light.svg");
+    height: 100px;
+    width: 100px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+.circle-dark {
+    background-image: url("Assets/SVG/PFP_Dark.svg");
     height: 100px;
     width: 100px;
     background-color: #bbb;
@@ -47,7 +69,7 @@ body{
     width: 250px;
     height: 40px;
 }
-.name{
+.name-light{
     font-family: "Friend";
     font-size: 15px;
     border-radius: 25px;
@@ -56,4 +78,18 @@ body{
     border: none;
     padding-left: 15px;
     color: #3e604c;
+}
+.name-dark{
+    font-family: "Friend";
+    font-size: 15px;
+    border-radius: 25px;
+    width: 250px;
+    height: 50px;
+    border: none;
+    padding-left: 15px;
+    color: #ffffff;
+    background-color: rgb(107, 144, 118);
+}
+.name-dark::placeholder{
+    color: #ffffff;
 }

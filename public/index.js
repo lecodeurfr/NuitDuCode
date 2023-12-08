@@ -31,3 +31,21 @@ inscriptionForm.addEventListener("submit", function (e) {
             alert("Une erreur est survenue lors de l'inscription. Veuillez réessayer.");
         });*/
 });
+let isLightMode = true
+function switchMode(){
+    if(isLightMode){
+        document.getElementById("logo").setAttribute("src", "./Assets/Logo_Dark.svg")
+        document.getElementById("mode").setAttribute("src", "./Assets/Sun.svg")
+        document.getElementById("container").setAttribute("class", "mainContainer-dark")
+        document.getElementById("pfp").setAttribute("class", "circle-dark")
+        document.getElementById("nom").setAttribute("class", "name-dark")
+        isLightMode = false
+    }else{
+        document.getElementById("logo").setAttribute("src", "./Assets/Logo_Light.svg")
+        document.getElementById("mode").setAttribute("src", "./Assets/Moon.svg")
+        document.getElementById("container").setAttribute("class", "mainContainer-light")
+        document.getElementById("pfp").setAttribute("class", "circle-light")
+        document.getElementById("nom").setAttribute("class", "name-light")
+        isLightMode = true
+    }
+}
