@@ -6,12 +6,57 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="leaderboardContent" id="leadContent">
-    <p>Hello !</p>
+<div class="leaderboardContainer" id="leadContent">
+    <div class="leaderboardContent-light" id="modeLeaderboard">
+        <div class="leadClose">
+            <img src="./Assets/cross.svg" style="height: 64px;" onclick="closeLeaderboard()">
+        </div>
+        <div class="leadTop">
+            <div class="tops">
+                    <p class="number">2</p>
+                <div class="bar2">
+                    <p class="leadText">Score</p>
+                    <p id="score2" class="leadText">XXXXXX</p>
+                </div>
+            </div>
+            <div class="tops">
+                <p class="number">1</p>
+                <div class="bar1">
+                    <p class="leadText">Score</p>
+                    <p id="score1" class="leadText">XXXXXX</p>
+                </div>
+            </div>
+            <div class="tops">
+                <p class="number">3</p>
+                <div class="bar3">
+                    <p class="leadText">Score</p>
+                    <p id="score3" class="leadText">XXXXXX</p>
+                </div>
+            </div>
+        </div>
+        <div class="leadMid">
+            <div class="midLeft">
+                <img src="./Assets/SVG/PFP_Light.svg">
+                <p id="player1" class="playerName-light">Player1</p>
+            </div>
+            <div class="midMid">
+                <img src="./Assets/SVG/PFP_Light.svg">
+                <p id="player2" class="playerName-light">Player2</p>
+            </div>
+            <div class="midRight">
+                <img src="./Assets/SVG/PFP_Light.svg">
+                <p id="player3" class="playerName-light">Player3</p>
+            </div>
+        </div>
+        <div class="leadBot">
+            <p id="myScore" class="leadText">Mon score : XXXXXX</p>
+            <p id="myClass" class="leadText">Place : XXXXXX</p>
+        </div>
+    </div>
 </div>
 <div class="mainContainer-light" id="container">
     <div class="header">
-        <img src="./Assets/Leaderboard.svg">
+        <img src="./Assets/Leaderboard.svg" onclick="openLeaderboard()">
         <img src="./Assets/Logo_Light.svg" id="logo">
         <img src="./Assets/Moon.svg" id="mode" onclick="changeMode()">
     </div>

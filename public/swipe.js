@@ -1,5 +1,6 @@
 let touchstartX = 0
 let touchendX = 0
+let isLeaderOpen = false
     
 function checkDirection() {
   if (touchendX < touchstartX) animLeft()
@@ -7,6 +8,15 @@ function checkDirection() {
 }
 let posXG = 0
 
+function closeLeaderboard(){
+    document.getElementById("leadContent").setAttribute("style", "display:none;")
+    isLeaderOpen = false
+}
+closeLeaderboard()
+function openLeaderboard(){
+    document.getElementById("leadContent").setAttribute("style", "")
+    isLeaderOpen = true
+}
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -18,9 +28,8 @@ function swipeButtonNo(){
 function swipeButtonYes(){
     animRight()
 }
-
+let isResponse = true
 async function animLeft(){
-    
     let posX = posXG
     let max = -window.screen.width*4;
     while(max < posX){
@@ -30,7 +39,16 @@ async function animLeft(){
     }
     document.getElementById("slide").remove()
     await sleep(100)
-    generateCard("Un arbre tombe", "Un arbre est tombé un jour à un endroit pas loin de Rennes, une équipe de sapeurs pompier est dépêchée sur place afin de dégager l'arbre")
+    if(isResponse){
+        generateResponse("Un arbre tombe", "Lorem ipsum dolor sit amet. Cum dignissimos consequuntur aut praesentium voluptatem in blanditiis magni sed eligendi alias ad ullam aliquid! Ab voluptatem dignissimos 33 perferendis ratione nam animi neque et voluptatem accusantium et galisum voluptatum est rerum aliquid.")
+        isResponse = false
+        document.getElementById("bottom").style.display = "none";
+    }else{
+        generateCard("Un arbre tombe", "./Assets/BG_Dark.svg")
+        isResponse = true
+        document.getElementById("bottom").style.display = "flex";
+    }
+    
 }
 
 async function animRight(){
@@ -43,17 +61,25 @@ async function animRight(){
     }
     document.getElementById("slide").remove()
     await sleep(100)
-    generateCard("Un arbre tombe", "Un arbre est tombé un jour à un endroit pas loin de Rennes, une équipe de sapeurs pompier est dépêchée sur place afin de dégager l'arbre")
+    if(isResponse){
+        generateResponse("Un arbre tombe", "Lorem ipsum dolor sit amet. Cum dignissimos consequuntur aut praesentium voluptatem in blanditiis magni sed eligendi alias ad ullam aliquid! Ab voluptatem dignissimos 33 perferendis ratione nam animi neque et voluptatem accusantium et galisum voluptatum est rerum aliquid.")
+        isResponse = false
+        document.getElementById("bottom").style.display = "none";
+    }else{
+        generateCard("Un arbre tombe", "./Assets/BG_Dark.svg")
+        isResponse = true
+        document.getElementById("bottom").style.display = "flex";
+    }
 }
 
 document.addEventListener('touchstart', e => {
-    if(e.changedTouches[0].screenY < 6*( window.screen.height/4)){
+    if(e.changedTouches[0].screenY < 6*( window.screen.height/4) && !isLeaderOpen){
         touchstartX = e.changedTouches[0].screenX
     }
 })
 
 document.addEventListener("touchmove", e => {
-    if(e.changedTouches[0].screenY < 6*(window.screen.height/4)){
+    if(e.changedTouches[0].screenY < 6*(window.screen.height/4) && !isLeaderOpen){
     posXG = e.changedTouches[0].screenX-500
     document.getElementById("slide").style.left = posXG+"px";
     }
@@ -61,7 +87,7 @@ document.addEventListener("touchmove", e => {
 })
 
 document.addEventListener('touchend', e => {
-    if(e.changedTouches[0].screenY < 6*(window.screen.height/4)){
+    if(e.changedTouches[0].screenY < 6*(window.screen.height/4) && !isLeaderOpen){
         touchendX = e.changedTouches[0].screenX
         checkDirection()
     }
@@ -77,6 +103,10 @@ function changeMode(){
         document.getElementById("no").setAttribute("src", "./Assets/No_Dark.svg")
         document.getElementById("yes").setAttribute("src", "./Assets/Yes_Dark.svg")
         document.getElementById("slide").setAttribute("class", "slideContainer-dark")
+        document.getElementById("modeLeaderboard").setAttribute("class", "leaderboardContent-dark")
+        document.getElementById("player1").setAttribute("class", "playerName-dark")
+        document.getElementById("player2").setAttribute("class", "playerName-dark")
+        document.getElementById("player3").setAttribute("class", "playerName-dark")
         lightMode = false
     }else{
         document.getElementById("mode").setAttribute("src", "./Assets/Moon.svg")
@@ -85,11 +115,15 @@ function changeMode(){
         document.getElementById("no").setAttribute("src", "./Assets/No_Light.svg")
         document.getElementById("yes").setAttribute("src", "./Assets/Yes_Light.svg")
         document.getElementById("slide").setAttribute("class", "slideContainer-light")
+        document.getElementById("modeLeaderboard").setAttribute("class", "leaderboardContent-light")
+        document.getElementById("player1").setAttribute("class", "playerName-light")
+        document.getElementById("player2").setAttribute("class", "playerName-light")
+        document.getElementById("player3").setAttribute("class", "playerName-light")
         lightMode = true
     }
 }
 
-function generateCard(Stitle, Sdesc){
+function generateCard(Stitle, Simg){
     let container = document.createElement("div");
     if(lightMode){
         container.setAttribute("class", "slideContainer-light")
@@ -104,8 +138,30 @@ function generateCard(Stitle, Sdesc){
     container.appendChild(title)
     let image = document.createElement("img")
     image.setAttribute("class", "imageSlider")
-    image.setAttribute("src", "./Assets/BG_Light.svg");
+    image.setAttribute("src", Simg)
     container.appendChild(image)
     document.getElementById("sliders").appendChild(container)
 }
-generateCard("Un arbre tombe", "Un arbre est tombé un jour à un endroit pas loin de Rennes, une équipe de sapeurs pompier est dépêchée sur place afin de dégager l'arbre")
+generateCard("Un arbre tombe", "./Assets/BG_Dark.svg")
+function generateResponse(Stitle, Sdesc){
+    let container = document.createElement("div");
+    if(lightMode){
+        container.setAttribute("class", "slideContainer-light")
+    }else{
+        container.setAttribute("class", "slideContainer-dark")
+    }
+    container.setAttribute("id", "slide")
+    let title = document.createElement("p")
+    title.setAttribute("class", "title")
+    title.innerText = Stitle
+    container.appendChild(title)
+    let desc = document.createElement("p")
+    desc.setAttribute("class", "desc")
+    desc.innerText = Sdesc
+    container.appendChild(desc)
+    let hint = document.createElement("p")
+    hint.setAttribute("class", "hint")
+    hint.innerText = "Swipez pour continuer"
+    container.appendChild(hint)
+    document.getElementById("sliders").appendChild(container)
+}
