@@ -56,16 +56,19 @@
 </div>
 <div class="mainContainer-light" id="container">
     <div class="header">
-        <img src="./Assets/Leaderboard.svg" onclick="openLeaderboard()" style="width: 15%;">
-        <img src="./Assets/Logo_Light.svg" onclick="afficheNoms()" id="logo"style="width:40%;">
-        <img src="./Assets/Moon.svg" id="mode" onclick="changeMode()"style="width: 15%;">
+        <img src="./Assets/Leaderboard.svg" onclick="openLeaderboard()" style="width: 15%;" class="btnLeader">
+        <img src="./Assets/Logo_Light.svg" onclick="afficheNoms()" id="logo"style="width:40%;" class="mainLogo">
+        <img src="./Assets/Moon.svg" id="mode" onclick="changeMode()"style="width: 15%;" class="btnMode">
     </div>
     <div id="sliders">
 
     </div>
     <div class="bottom" id="bottom">
-        <img src="./Assets/No_Light.svg" style="width: 25%;" id="no" onclick="swipeButtonNo()">
-        <img src="./Assets/Yes_Light.svg" style="width: 25%;" id="yes" onclick="swipeButtonYes()">
+        <img src="./Assets/No_Light.svg" style="width: 25%;" id="no" onclick="swipeButtonNo()" class="botBtn">
+        <img src="./Assets/Yes_Light.svg" style="width: 25%;" id="yes" onclick="swipeButtonYes()" class="botBtn">
+    </div>
+    <div class="bottom" id="bottomResponse">
+        <img src="./Assets/Yes_Light.svg" id="yesResponse" style="width: 25%;" onclick="validateResponse()" class="botBtn">
     </div>
 </div>
 <script src="swipe.js"></script>

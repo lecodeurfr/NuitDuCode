@@ -31,6 +31,8 @@ let responses = [true,false,false,true,false,true,false,false,true,true,false,tr
     
 let curQuestion = 0
 
+document.getElementById("bottomResponse").style.display = "none"
+
 function checkDirection() {
   if (touchendX < touchstartX) animLeft()
   if (touchendX > touchstartX) animRight()
@@ -57,21 +59,30 @@ function swipeButtonNo(){
 function swipeButtonYes(){
     animRight()
 }
+function validateResponse(){
+    animRight()
+}
+
 let isResponse = true
 async function animLeft(){
     let posX = posXG
-    let max = -window.screen.width*4;
+    if(window.screen.height < window.screen.width){
+        let max = -window.screen.width+50;
+    }else{
+        let max = -window.screen.width*4;
+    }
+    
     while(max < posX){
         document.getElementById("slide").style.left = posX+"px"
         posX = posX - 20
         await sleep(1)
     }
     document.getElementById("slide").remove()
-    await sleep(100)
     if(isResponse){
         generateResponse(titles[curQuestion], desc[curQuestion], responses[curQuestion])
         isResponse = false
         document.getElementById("bottom").style.display = "none";
+        document.getElementById("bottomResponse").style.display = "flex"
         if(curQuestion < titles.length){
             curQuestion++
         }else{
@@ -82,24 +93,30 @@ async function animLeft(){
         generateCard(titles[curQuestion], "./images/Q"+nb+".webp")
         isResponse = true
         document.getElementById("bottom").style.display = "flex";
+        document.getElementById("bottomResponse").style.display = "none"
     }
     
 }
 
 async function animRight(){
     let posX = posXG
-    let max = window.screen.width*4;
+    let max = 0
+    if(window.screen.height < window.screen.width){
+        max = window.screen.width+50;
+    }else{
+        max = window.screen.width*4;
+    }
     while(max > posX){
         document.getElementById("slide").style.left = posX+"px"
         posX = posX + 20
         await sleep(1)
     }
     document.getElementById("slide").remove()
-    await sleep(100)
     if(isResponse){
         generateResponse(titles[curQuestion], desc[curQuestion], responses[curQuestion])
         isResponse = false
         document.getElementById("bottom").style.display = "none";
+        document.getElementById("bottomResponse").style.display = "flex"
         if(curQuestion < titles.length){
             curQuestion++
         }else{
@@ -110,6 +127,7 @@ async function animRight(){
         generateCard(titles[curQuestion], "./images/Q"+nb+".webp")
         isResponse = true
         document.getElementById("bottom").style.display = "flex";
+        document.getElementById("bottomResponse").style.display = "none"
     }
 }
 
@@ -148,6 +166,7 @@ function changeMode(){
         document.getElementById("player1").setAttribute("class", "playerName-dark")
         document.getElementById("player2").setAttribute("class", "playerName-dark")
         document.getElementById("player3").setAttribute("class", "playerName-dark")
+        document.getElementById("yesResponse").setAttribute("src", "./Assets/Yes_Dark.svg")
         lightMode = false
     }else{
         document.getElementById("mode").setAttribute("src", "./Assets/Moon.svg")
@@ -160,6 +179,7 @@ function changeMode(){
         document.getElementById("player1").setAttribute("class", "playerName-light")
         document.getElementById("player2").setAttribute("class", "playerName-light")
         document.getElementById("player3").setAttribute("class", "playerName-light")
+        document.getElementById("yesResponse").setAttribute("src", "./Assets/Yes_Light.svg")
         lightMode = true
     }
 }
@@ -216,9 +236,3 @@ function generateResponse(Stitle, Sdesc, isTrue){
     container.appendChild(hint)
     document.getElementById("sliders").appendChild(container)
 }
-function verifyPhone(){
-    if(window.screen.height < window.screen.width){
-        alert("L'application à été développé pour les mobiles, veuillez utiliser votre téléphone pour une exprérience optimale")
-    }
-}
-verifyPhone()
