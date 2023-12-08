@@ -6,16 +6,25 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="mainContainer" id="container">
+<div class="leaderboardContent" id="leadContent">
+    <p>Hello !</p>
+</div>
+<div class="mainContainer-light" id="container">
     <div class="header">
-        <button class="leaderboardContainer" id="leaderboard" onclick="openLeaderboard()">Leaderboard</button>
-        <button class="settingContainer" id="setting"></button>
+        <img src="./Assets/Leaderboard.svg">
+        <img src="./Assets/Logo_Light.svg" id="logo">
+        <img src="./Assets/Moon.svg" id="mode" onclick="changeMode()">
     </div>
-    <div class="leaderboardContent" id="leadContent">
-        <p>Hello !</p>
+    <div id="sliders">
+
+    </div>
+    <div class="bottom" id="bottom">
+        <img src="./Assets/No_Light.svg" id="no" onclick="swipeButtonNo()">
+        <img src="./Assets/Yes_Light.svg" id="yes" onclick="swipeButtonYes()">
     </div>
 </div>
 <script src="swipe.js"></script>
 <script src="leaderbord.js"></script>
+<script src="settings.js"></script>
 </body>
 </html>
